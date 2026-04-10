@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  margin-bottom: $space-16;
+
+  @include mobile { margin-bottom: $space-10; }
+}
+
+.center { text-align: center; }
+.left   { text-align: left; }
+
+// Fila con lineas laterales + texto
+.overlineRow {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  margin-bottom: $space-5;
+
+  .center & { justify-content: center; }
+  .left &   { justify-content: flex-start; }
+}
+
+.line {
+  display: block;
+  height: 1px;
+  width: 40px;
+  background: $color-primary;
+  transform-origin: left center;
+  flex-shrink: 0;
+
+  // Segunda linea (lado derecho) — en left solo hay una
+  .left & + .overline + & { display: none; }
+}
+
+.overline {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 600;
+  color: $color-primary;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.title {
+  font-family: $font-heading;
+  font-weight: 800;
+  line-height: 1.1;
+  color: $color-text;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 0;
+
+  // Sin gradiente — texto solido, mas limpio
+  background: none;
+  -webkit-text-fill-color: unset;
+
+  @include mobile { font-size: $text-2xl; }
+}
+
+.description {
+  color: $color-text-muted;
+  font-size: $text-base;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-top: $space-4;
+
+  .center & { margin-left: auto; margin-right: auto; }
+
+  @include mobile { font-size: $text-sm; }
+}

@@ -1,0 +1,135 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.about {
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-16;
+  align-items: start;
+
+  @include laptop { gap: $space-10; }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $space-10;
+  }
+}
+
+.bio {
+  color: $color-text-muted;
+  font-size: $text-base;
+  line-height: 1.8;
+  margin-bottom: $space-5;
+}
+
+// Facts
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+  margin: $space-6 0 $space-8;
+
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.fact {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4;
+  @include glass-card;
+  transition: $transition-base;
+
+  &:hover {
+    border-color: rgba($color-primary, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.factIcon {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  background: rgba($color-primary, 0.12);
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.factValue {
+  display: block;
+  font-family: $font-heading;
+  font-size: $text-base;
+  font-weight: 700;
+  color: $color-text;
+}
+
+.factLabel {
+  display: block;
+  font-size: $text-xs;
+  color: $color-text-muted;
+  margin-top: 2px;
+}
+
+// Skills
+.skillsCol {
+  @include flex-col;
+  gap: $space-8;
+}
+
+.skillGroup {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.skillCat {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: 600;
+  color: $color-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-bottom: $space-3;
+  border-bottom: 1px solid $color-border;
+}
+
+.skillList {
+  @include flex-col;
+  gap: $space-4;
+}
+
+.skill { @include flex-col; gap: $space-2; }
+
+.skillHeader {
+  @include flex-between;
+}
+
+.skillName {
+  font-size: $text-sm;
+  font-weight: 500;
+  color: $color-text;
+}
+
+.skillLevel {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $color-text-muted;
+}
+
+.skillBar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  border-radius: $radius-full;
+  background: $gradient-primary;
+  box-shadow: none;
+}

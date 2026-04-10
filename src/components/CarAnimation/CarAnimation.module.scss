@@ -1,0 +1,142 @@
+@use '../../styles/variables' as *;
+
+// Contenedor fijo en el fondo de pantalla
+.track {
+  position: fixed;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  height: 56px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+// Línea de pista
+.roadLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba($color-primary, 0.1) 20%,
+    rgba($color-primary, 0.1) 80%,
+    transparent 100%
+  );
+}
+
+// Wrapper del carro — anima de izquierda a derecha en loop
+.car {
+  position: absolute;
+  bottom: 2px;
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  opacity: 0.62;
+  animation: drive 14s linear infinite;
+
+  // Motion blur suave horizontal
+  filter: blur(0px);
+
+  &:global(.animating) {
+    filter: blur(0.4px);
+  }
+}
+
+// Líneas de velocidad a la izquierda del carro
+.speedLines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-right: 6px;
+  margin-bottom: 14px;
+  opacity: 0;
+  animation: linesAppear 14s linear infinite;
+
+  span {
+    display: block;
+    height: 1.5px;
+    border-radius: 1px;
+    background: linear-gradient(90deg, transparent, $color-accent);
+    animation: linesPulse 14s linear infinite;
+
+    &:nth-child(1) { width: 32px; margin-left: 6px; opacity: 0.55; }
+    &:nth-child(2) { width: 48px; opacity: 0.4; }
+    &:nth-child(3) { width: 22px; margin-left: 10px; opacity: 0.3; }
+  }
+}
+
+// El carro entra desde -160px y sale a calc(100vw + 20px)
+@keyframes drive {
+  0%   {
+    transform: translateX(-160px);
+    filter: blur(0.3px);
+  }
+  5%   {
+    filter: blur(0px);
+  }
+  88%  {
+    filter: blur(0px);
+    opacity: 0.62;
+  }
+  94%  {
+    transform: translateX(calc(100vw + 20px));
+    filter: blur(0.4px);
+    opacity: 0.4;
+  }
+  95%  {
+    transform: translateX(calc(100vw + 20px));
+    opacity: 0;
+  }
+  // Pausa invisible antes de volver
+  99%  {
+    transform: translateX(-160px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-160px);
+    opacity: 0;
+  }
+}
+
+@keyframes linesAppear {
+  0%   { opacity: 0; }
+  4%   { opacity: 1; }
+  88%  { opacity: 1; }
+  94%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes linesPulse {
+  0%, 100% { opacity: 0; }
+  10%, 85%  { opacity: 1; }
+}
+
+// En móviles, reducir tamaño
+@media (max-width: 480px) {
+  .car {
+    transform-origin: left bottom;
+    animation: driveMobile 14s linear infinite;
+  }
+
+  @keyframes driveMobile {
+    0%  {
+      transform: translateX(-130px) scale(0.75);
+      opacity: 0;
+    }
+    4%  { opacity: 0.55; }
+    88% { opacity: 0.55; }
+    94% {
+      transform: translateX(calc(100vw + 20px)) scale(0.75);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-130px) scale(0.75);
+      opacity: 0;
+    }
+  }
+}

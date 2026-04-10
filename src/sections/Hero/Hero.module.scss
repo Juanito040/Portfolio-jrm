@@ -1,0 +1,280 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  @include flex-center;
+  padding-top: 80px; // offset navbar
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+// Grid 2 columnas
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: $space-16;
+  min-height: calc(100vh - 80px);
+  padding: $space-12 0;
+
+  @include laptop {
+    gap: $space-10;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: $space-10;
+    padding: $space-8 0;
+  }
+}
+
+// Columna texto
+.textCol {
+  @include flex-col;
+  gap: $space-5;
+
+  @include tablet {
+    align-items: center;
+    order: 2;
+  }
+}
+
+.greeting {
+  font-size: $text-base;
+  font-weight: 500;
+  color: $color-text-muted;
+  letter-spacing: 0.05em;
+}
+
+.name {
+  font-family: $font-heading;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  @include gradient-text;
+}
+
+.typewriterRow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 2rem;
+
+  @include tablet { justify-content: center; }
+}
+
+.typewriter {
+  font-family: $font-mono;
+  font-size: $text-lg;
+  color: $color-accent;
+  font-weight: 500;
+
+  @include mobile { font-size: $text-base; }
+}
+
+.cursor {
+  font-family: $font-mono;
+  font-size: $text-lg;
+  color: $color-primary;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.bio {
+  font-size: $text-lg;
+  color: $color-text-muted;
+  max-width: 520px;
+  line-height: 1.7;
+
+  @include tablet { max-width: 100%; }
+  @include mobile { font-size: $text-base; }
+}
+
+.actions {
+  display: flex;
+  gap: $space-4;
+  flex-wrap: wrap;
+
+  @include tablet { justify-content: center; }
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex-wrap: wrap;
+
+  @include tablet { justify-content: center; }
+}
+
+.socialLink {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  color: $color-text-muted;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+  transition: $transition-spring;
+
+  &:hover {
+    color: $color-primary;
+    border-color: rgba($color-primary, 0.35);
+    background: rgba($color-primary, 0.07);
+    transform: translateY(-2px);
+  }
+}
+
+.socialDivider {
+  width: 1px;
+  height: 20px;
+  background: $color-border;
+}
+
+.location {
+  font-size: $text-sm;
+  color: $color-text-muted;
+}
+
+// Columna avatar
+.avatarCol {
+  @include flex-center;
+  order: 1; // Aparece primero en mobile solo visualmente
+
+  @include tablet { order: 1; }
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 340px;
+  height: 340px;
+
+  @include laptop { width: 280px; height: 280px; }
+  @include tablet { width: 240px; height: 240px; }
+  @include mobile { width: 200px; height: 200px; }
+}
+
+.avatarRing {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: $gradient-primary border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: rotate 8s linear infinite;
+}
+
+.avatarRing2 {
+  position: absolute;
+  inset: -32px;
+  border-radius: 50%;
+  border: 1px solid rgba($color-secondary, 0.3);
+  animation: rotate 12s linear infinite reverse;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: $gradient-primary;
+  @include flex-center;
+  box-shadow: $shadow-lg;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.initials {
+  font-family: $font-heading;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  color: #fff;
+  user-select: none;
+}
+
+// Badges flotantes
+.badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: 600;
+  font-family: $font-mono;
+  background: rgba($color-bg-card, 0.9);
+  border: 1px solid $color-border;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+  box-shadow: $shadow-md;
+
+  &Top        { top: 0%;    right: -16%; }
+  &TopLeft    { top: 12%;   left: -20%; }
+  &Right      { top: 32%;  right: -20%; }
+  &Mid        { bottom: 24%; right: -20%; }
+  &Bottom     { bottom: 0%; right: -16%; }
+  &BottomLeft { bottom: 18%; left: -20%; }
+  &Left       { top: 50%;  left: -16%; transform: translateY(-50%); }
+  &Angular    { top: 72%;  right: -20%; }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+// Scroll indicator
+.scrollIndicator {
+  position: absolute;
+  bottom: $space-8;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $color-text-muted;
+  transition: $transition-base;
+
+  &:hover { color: $color-primary; }
+}
+
+// Particulas
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $gradient-primary;
+
+  &:nth-child(odd) {
+    background: $color-secondary;
+    width: 4px;
+    height: 4px;
+  }
+}

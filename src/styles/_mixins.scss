@@ -1,0 +1,93 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+// Responsive
+@mixin mobile  { @media (max-width: #{$bp-mobile})  { @content; } }
+@mixin tablet  { @media (max-width: #{$bp-tablet})  { @content; } }
+@mixin laptop  { @media (max-width: #{$bp-laptop})  { @content; } }
+@mixin desktop { @media (min-width: #{$bp-desktop}) { @content; } }
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// Container
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-6;
+
+  @include tablet { padding: 0 $space-4; }
+  @include mobile { padding: 0 $space-4; }
+}
+
+// Section padding
+@mixin section-padding {
+  padding: $space-24 0;
+
+  @include tablet { padding: $space-16 0; }
+  @include mobile { padding: $space-12 0; }
+}
+
+// Gradient text
+@mixin gradient-text($gradient: $gradient-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Glass card
+@mixin glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+  backdrop-filter: blur(10px);
+  border-radius: $radius-lg;
+}
+
+// Glow effect
+@mixin glow($color: $color-primary, $size: 20px) {
+  box-shadow: 0 0 #{$size} rgba($color, 0.4);
+}
+
+// Truncate text
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Focus visible
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+  }
+}
+
+// Section heading
+@mixin section-heading {
+  font-family: $font-heading;
+  font-size: $text-3xl;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: $space-4;
+
+  @include tablet { font-size: $text-2xl; }
+  @include mobile { font-size: $text-xl; }
+}

@@ -1,0 +1,73 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.toggle {
+  position: fixed;
+  right: $space-6;
+  bottom: $space-8;
+  z-index: $z-navbar;
+
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  color: $color-text-muted;
+  cursor: pointer;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    border-color: rgba($color-primary, 0.4);
+    color: $color-text;
+    background: $color-bg-card2;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+  }
+
+  @include mobile {
+    right: $space-4;
+    bottom: $space-6;
+    padding: $space-2 $space-3;
+  }
+}
+
+.globe {
+  display: flex;
+  align-items: center;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.labels {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.current {
+  color: $color-text;
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+}
+
+.separator {
+  color: $color-border;
+  opacity: 0.8;
+}
+
+.next {
+  color: $color-text-muted;
+  opacity: 0.6;
+}

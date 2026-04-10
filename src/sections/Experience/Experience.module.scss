@@ -1,0 +1,191 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.experience { position: relative; }
+
+// Timeline container
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+
+}
+
+// Línea central animada (div real en lugar de ::before)
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform-origin: top center;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    $color-primary 10%,
+    $color-secondary 90%,
+    transparent
+  );
+
+  @include tablet { left: 20px; }
+}
+
+// Item del timeline
+.item {
+  position: relative;
+  width: 50%;
+  padding: $space-6;
+
+  @include tablet {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: $space-4;
+  }
+
+  &.left  {
+    padding-right: $space-10;
+    text-align: right;
+
+    @include tablet {
+      text-align: left;
+      padding-right: $space-4;
+    }
+  }
+
+  &.right {
+    padding-left: $space-10;
+    margin-left: 50%;
+
+    @include tablet {
+      margin-left: 0;
+      padding-left: 60px;
+    }
+  }
+}
+
+// Dot
+.dot {
+  position: absolute;
+  top: $space-8;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  @include flex-center;
+  background: $color-bg-card;
+  border: 2px solid var(--dot-color, #{$color-primary});
+  box-shadow: none;
+  z-index: 1;
+
+  .right & {
+    right: auto;
+    left: -18px;
+  }
+
+  @include tablet {
+    left: 2px !important;
+    right: auto !important;
+  }
+}
+
+.dotIcon {
+  display: flex;
+}
+
+// Card
+.card {
+  @include glass-card;
+  padding: $space-5;
+  transition: $transition-base;
+  text-align: left;
+
+  &:hover { border-color: rgba($color-primary, 0.25); }
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-3;
+  flex-wrap: wrap;
+}
+
+.type {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-3;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: 600;
+  font-family: $font-mono;
+  border: 1px solid;
+}
+
+.current {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 2px $space-3;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: 600;
+  background: rgba($color-success, 0.12);
+  color: $color-success;
+  border: 1px solid rgba($color-success, 0.25);
+}
+
+.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $color-success;
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+.role {
+  font-family: $font-heading;
+  font-size: $text-base;
+  font-weight: 700;
+  color: $color-text;
+  margin-bottom: $space-2;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $text-sm;
+  color: $color-text-muted;
+  margin-bottom: $space-3;
+  flex-wrap: wrap;
+}
+
+.period {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $color-text-muted;
+  opacity: 0.7;
+}
+
+.desc {
+  font-size: $text-sm;
+  color: $color-text-muted;
+  line-height: 1.7;
+  margin-bottom: $space-4;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}

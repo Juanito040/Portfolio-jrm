@@ -1,0 +1,137 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contact { position: relative; }
+
+// Grid de 4 tarjetas
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-5;
+  max-width: 960px;
+  margin: 0 auto;
+
+  @include laptop { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr 1fr; gap: $space-3; }
+}
+
+// Tarjeta de contacto
+.card {
+  @include flex-col;
+  align-items: center;
+  text-align: center;
+  gap: $space-3;
+  padding: $space-8 $space-5;
+  @include glass-card;
+  text-decoration: none;
+  border-radius: $radius-xl;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  // Glow de fondo al hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--card-bg, rgba($color-primary, 0.08));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+  }
+
+  &:hover {
+    border-color: rgba(var(--card-color, #{$color-primary}), 0.35);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+
+    &::before { opacity: 1; }
+
+    .iconWrap {
+      background: var(--card-bg, rgba($color-primary, 0.12));
+      color: var(--card-color, #{$color-primary});
+      transform: scale(1.1);
+    }
+
+    .label { color: var(--card-color, #{$color-primary}); }
+  }
+}
+
+.iconWrap {
+  @include flex-center;
+  width: 60px;
+  height: 60px;
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.05);
+  color: $color-text-muted;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.label {
+  font-family: $font-heading;
+  font-size: $text-base;
+  font-weight: 700;
+  color: $color-text;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.handle {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $color-text-muted;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+// Hint de copiar
+.copyHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.copyLabel,
+.copied {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-family: $font-mono;
+  padding: 2px $space-2;
+  border-radius: $radius-full;
+}
+
+.copyLabel {
+  color: $color-text-muted;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.copied {
+  color: $color-success;
+  background: rgba($color-success, 0.12);
+  border: 1px solid rgba($color-success, 0.2);
+}
+
+// Mostrar hint al hover de la card
+.card:hover .copyLabel { opacity: 1; }
+
+// Reset de button
+button.card {
+  background: none;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,142 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-navbar;
+  padding: $space-4 0;
+  transition: $transition-base;
+
+  &.scrolled {
+    background: rgba($color-bg, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid $color-border;
+    padding: $space-3 0;
+  }
+}
+
+.inner {
+  @include container;
+  @include flex-between;
+  gap: $space-4;
+}
+
+// Logo
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-heading;
+  font-size: $text-lg;
+  font-weight: 700;
+  color: $color-text;
+  text-decoration: none;
+  transition: $transition-base;
+
+  svg { color: $color-primary; }
+
+  .dot { color: $color-primary; }
+
+  &:hover {
+    color: $color-text;
+    transform: scale(1.03);
+  }
+}
+
+// Links desktop
+.links {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  @include tablet { display: none; }
+}
+
+.link {
+  position: relative;
+  padding: $space-2 $space-3;
+  font-size: $text-sm;
+  font-weight: 500;
+  color: $color-text-muted;
+  text-decoration: none;
+  border-radius: $radius-md;
+  transition: $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: $gradient-primary;
+    border-radius: $radius-full;
+    transition: $transition-base;
+  }
+
+  &:hover {
+    color: $color-text;
+    &::after { width: 60%; }
+  }
+
+  &.active {
+    color: $color-primary;
+    &::after { width: 60%; }
+  }
+}
+
+// CTA desktop
+.cta {
+  @include tablet { display: none; }
+}
+
+// Burger
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  color: $color-text;
+  cursor: pointer;
+  padding: $space-2;
+  border-radius: $radius-md;
+  transition: $transition-base;
+
+  &:hover { color: $color-primary; }
+
+  @include tablet { display: flex; }
+}
+
+// Menu mobile
+.mobileMenu {
+  overflow: hidden;
+  background: rgba($color-bg, 0.98);
+  border-top: 1px solid $color-border;
+
+  nav {
+    @include container;
+    @include flex-col;
+    gap: $space-1;
+    padding-top: $space-4;
+    padding-bottom: $space-6;
+  }
+}
+
+.mobileLink {
+  padding: $space-3 $space-4;
+  font-size: $text-base;
+  font-weight: 500;
+  color: $color-text-muted;
+  text-decoration: none;
+  border-radius: $radius-md;
+  transition: $transition-base;
+
+  &:hover, &.active {
+    color: $color-primary;
+    background: rgba($color-primary, 0.08);
+  }
+}
