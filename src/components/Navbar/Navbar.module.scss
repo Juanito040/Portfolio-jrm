@@ -8,7 +8,18 @@
   right: 0;
   z-index: $z-navbar;
   padding: $space-4 0;
-  transition: $transition-base;
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  // Propiedades explícitas — evita el destello blanco de backdrop-filter en Chrome
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    padding 0.25s ease,
+    backdrop-filter 0.25s ease,
+    -webkit-backdrop-filter 0.25s ease;
+  will-change: backdrop-filter;
 
   &.scrolled {
     background: rgba($color-bg, 0.85);
