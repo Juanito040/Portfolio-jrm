@@ -24,7 +24,6 @@ export default function MouseTrail() {
     window.addEventListener('resize', resize);
 
     const onMouseMove = (e) => {
-      // Solo 2 partículas pequeñas por movimiento
       for (let i = 0; i < 2; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 0.8 + 0.2;
@@ -33,10 +32,10 @@ export default function MouseTrail() {
           y:     e.clientY,
           vx:    Math.cos(angle) * speed,
           vy:    Math.sin(angle) * speed - 0.3,
-          life:  0.6,                              // vida más corta
-          size:  Math.random() * 2.5 + 1,         // tamaño pequeño
+          life:  0.6,
+          size:  Math.random() * 2.5 + 1,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          decay: Math.random() * 0.03 + 0.025,    // desaparecen rápido
+          decay: Math.random() * 0.03 + 0.025,
         });
       }
     };
@@ -57,7 +56,7 @@ export default function MouseTrail() {
         p.size  = Math.max(0, p.size * 0.96);
 
         ctx.save();
-        ctx.globalAlpha = Math.max(0, p.life * 0.5);  // opacidad máxima ~0.3
+        ctx.globalAlpha = Math.max(0, p.life * 0.5);
         ctx.shadowBlur  = 4;
         ctx.shadowColor = p.color;
         ctx.fillStyle   = p.color;

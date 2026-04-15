@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, Check, Copy } from 'lucide-react';
+import { Mail, Check, Copy } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../../components/SocialIcons';
 import { personalInfo } from '../../data/portfolio';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -37,15 +37,6 @@ const CONTACTS = [
     copy:   personalInfo.email,
     color:  '#0F9B8E',
     bg:     'rgba(15,155,142,0.1)',
-  },
-  {
-    type:   'copy',
-    icon:   <Phone size={28} />,
-    label:  'Teléfono',
-    handle: `+57 ${personalInfo.phone}`,
-    copy:   personalInfo.phone,
-    color:  '#25D366',
-    bg:     'rgba(37,211,102,0.1)',
   },
 ];
 

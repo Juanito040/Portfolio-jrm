@@ -1,6 +1,5 @@
 // Variantes reutilizables de Framer Motion
 
-// ── Entrada básica ─────────────────────────────────────────────────────────
 export const fadeUp = {
   hidden:  { opacity: 0, y: 28 },
   visible: (delay = 0) => ({
@@ -18,8 +17,6 @@ export const fadeIn = {
   }),
 };
 
-// ── Entrada con física de resorte ──────────────────────────────────────────
-// Más natural que easeOut — tiene inercia ligera al llegar
 export const springFadeUp = {
   hidden:  { opacity: 0, y: 36 },
   visible: (delay = 0) => ({
@@ -34,8 +31,6 @@ export const springFadeUp = {
   }),
 };
 
-// ── Pop-in para dots, badges, iconos ──────────────────────────────────────
-// Entra con ligero overshoot (rebote) — llamativo pero sutil
 export const popIn = {
   hidden:  { opacity: 0, scale: 0.5 },
   visible: (delay = 0) => ({
@@ -50,7 +45,6 @@ export const popIn = {
   }),
 };
 
-// ── Contenedor escalonado ──────────────────────────────────────────────────
 export const staggerContainer = (stagger = 0.1, delayChildren = 0) => ({
   hidden: {},
   visible: {
@@ -58,7 +52,6 @@ export const staggerContainer = (stagger = 0.1, delayChildren = 0) => ({
   },
 });
 
-// ── Slides ─────────────────────────────────────────────────────────────────
 export const slideLeft = {
   hidden:  { opacity: 0, x: -36 },
   visible: (delay = 0) => ({

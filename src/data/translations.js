@@ -1,5 +1,4 @@
 export const t = {
-  // ── Navbar ──────────────────────────────────────────────
   nav: {
     links: {
       es: ['Inicio', 'Sobre mí', 'Proyectos', 'Experiencia', 'Contacto'],
@@ -8,7 +7,7 @@ export const t = {
     cv: { es: 'Descargar CV', en: 'Download CV' },
   },
 
-  // ── Hero ────────────────────────────────────────────────
+
   hero: {
     greeting:  { es: 'Hola, soy',  en: "Hi, I'm" },
     role:      { es: 'Desarrollador Full Stack', en: 'Full Stack Developer' },
@@ -26,7 +25,7 @@ export const t = {
     },
   },
 
-  // ── About ───────────────────────────────────────────────
+
   about: {
     overline: { es: 'Sobre mí',  en: 'About me' },
     title:    { es: 'Quién soy', en: 'Who I am' },
@@ -47,16 +46,18 @@ export const t = {
     },
   },
 
-  // ── Projects ─────────────────────────────────────────────
+
   projects: {
-    overline:    { es: 'Proyectos',                             en: 'Projects' },
-    title:       { es: 'Lo que he construido',                  en: 'What I have built' },
-    description: { es: 'Una selección de proyectos personales y profesionales', en: 'A selection of personal and professional projects' },
-    filters:     { es: ['Todos', 'Full Stack', 'Frontend', 'Backend'], en: ['All', 'Full Stack', 'Frontend', 'Backend'] },
-    featured:    { es: 'Destacado', en: 'Featured' },
+    overline:        { es: 'Proyectos',                             en: 'Projects' },
+    title:           { es: 'Lo que he construido',                  en: 'What I have built' },
+    description:     { es: 'Una selección de proyectos personales y profesionales', en: 'A selection of personal and professional projects' },
+    filters:         { es: ['Todos', 'Full Stack', 'Frontend', 'Backend'], en: ['All', 'Full Stack', 'Frontend', 'Backend'] },
+    featured:        { es: 'Destacado', en: 'Featured' },
+    freelanceTitle:  { es: 'Proyectos Freelance',       en: 'Freelance Projects' },
+    universityTitle: { es: 'Proyectos Universitarios',  en: 'University Projects' },
   },
 
-  // ── Experience ───────────────────────────────────────────
+
   experience: {
     overline:    { es: 'Trayectoria',                      en: 'Career' },
     title:       { es: 'Experiencia & Educación',          en: 'Experience & Education' },
@@ -71,15 +72,15 @@ export const t = {
     },
   },
 
-  // ── Contact ──────────────────────────────────────────────
+
   contact: {
     overline:    { es: 'Contacto',   en: 'Contact' },
     copy:        { es: 'Copiar',     en: 'Copy' },
     copied:      { es: 'Copiado',    en: 'Copied' },
     title:       { es: 'Hablemos',   en: "Let's talk" },
     description: {
-      es: 'Estoy disponible para proyectos freelance, colaboraciones y oportunidades. Encuéntrame en cualquiera de estos medios.',
-      en: "I'm available for freelance projects, collaborations and opportunities. Find me on any of these channels.",
+      es: 'Disponible para proyectos freelance, colaboraciones profesionales y nuevas oportunidades. No dude en contactarme a través de cualquiera de los siguientes canales.',
+      en: 'Available for freelance projects, professional collaborations and new opportunities. Feel free to reach out through any of the following channels.',
     },
     infoTitle: { es: 'Conectemos',   en: "Let's connect" },
     infoText: {
@@ -115,7 +116,7 @@ export const t = {
     },
   },
 
-  // ── Footer ───────────────────────────────────────────────
+
   footer: {
     nav:     { es: 'Navegación',       en: 'Navigation' },
     contact: { es: 'Contacto rápido', en: 'Quick contact' },

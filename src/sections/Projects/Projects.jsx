@@ -5,7 +5,7 @@ import TechLogoBackground from '../../components/TechLogoBackground/TechLogoBack
 import { projects } from '../../data/portfolio';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
-import { staggerContainer, springFadeUp } from '../../utils/animations';
+import { staggerContainer } from '../../utils/animations';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { t, tx } from '../../data/translations';
 import styles from './Projects.module.scss';
@@ -15,9 +15,33 @@ const cardVariants = {
   visible: { opacity: 1, y: 0,  scale: 1, transition: { type: 'spring', stiffness: 75, damping: 16 } },
 };
 
+const freelanceIds  = [5, 6, 2];
+const universityIds = [3, 4];
+
+function ProjectGroup({ titleKey, ids, lang, gridClass }) {
+  const { ref, isInView } = useScrollReveal();
+  const filtered = projects.filter(p => ids.includes(p.id));
+
+  return (
+    <div className={styles.group}>
+      <h3 className={styles.groupTitle}>{tx(t.projects[titleKey], lang)}</h3>
+      <motion.div
+        ref={ref}
+        className={`${styles.grid}${gridClass ? ` ${gridClass}` : ''}`}
+        variants={staggerContainer(0.11)}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+      >
+        {filtered.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Projects() {
   const { lang } = useLanguage();
-  const { ref: gridRef, isInView: gridInView } = useScrollReveal();
 
   return (
     <section id="projects" className={`section ${styles.projects}`}>
@@ -29,18 +53,8 @@ export default function Projects() {
           description={tx(t.projects.description, lang)}
         />
 
-        {/* Grid de cards */}
-        <motion.div
-          ref={gridRef}
-          className={styles.grid}
-          variants={staggerContainer(0.11)}
-          initial="hidden"
-          animate={gridInView ? 'visible' : 'hidden'}
-        >
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </motion.div>
+        <ProjectGroup titleKey="freelanceTitle"  ids={freelanceIds}  lang={lang} gridClass={styles.gridThree} />
+        <ProjectGroup titleKey="universityTitle" ids={universityIds} lang={lang} />
 
       </div>
     </section>

@@ -3,6 +3,32 @@
 
 .projects { position: relative; }
 
+// Grupos de proyectos
+.group {
+  & + & { margin-top: $space-12; }
+}
+
+.groupTitle {
+  font-family: $font-heading;
+  font-size: $text-xl;
+  font-weight: 700;
+  color: $color-text;
+  margin-bottom: $space-8;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 1.1em;
+    background: $color-primary;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+}
+
 // Filtros
 .filters {
   display: flex;
@@ -40,11 +66,19 @@
 // Grid
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+  justify-content: center;
   gap: $space-6;
 
-  @include laptop  { grid-template-columns: repeat(2, 1fr); }
-  @include mobile  { grid-template-columns: 1fr; }
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+// Fuerza 3 columnas (grupo freelance)
+.gridThree {
+  grid-template-columns: repeat(3, 1fr);
+
+  @include laptop { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
 }
 
 // Card

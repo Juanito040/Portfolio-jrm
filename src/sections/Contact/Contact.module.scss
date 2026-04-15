@@ -3,15 +3,15 @@
 
 .contact { position: relative; }
 
-// Grid de 4 tarjetas
+// Grid de cards de contacto
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  justify-content: center;
   gap: $space-5;
   max-width: 960px;
   margin: 0 auto;
 
-  @include laptop { grid-template-columns: repeat(2, 1fr); }
   @include mobile { grid-template-columns: 1fr 1fr; gap: $space-3; }
 }
 

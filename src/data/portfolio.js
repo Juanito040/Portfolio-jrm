@@ -1,7 +1,3 @@
-// ============================================
-// DATA REAL — Juan Miguel Ramirez Mancilla
-// ============================================
-
 export const personalInfo = {
   name:     'Juan Ramirez',
   role:     'Desarrollador de Software Full Stack',
@@ -9,11 +5,10 @@ export const personalInfo = {
   bio:      'Ingeniero de Sistemas con experiencia en diversas tecnologías de desarrollo de software, con especial fortaleza en desarrollo web full stack. Manejo Node.js, Angular, Python, HTML, CSS, JavaScript y PHP, bases de datos MySQL y PostgreSQL, contenedorización con Docker y servicios en la nube con Microsoft Azure.',
   location: 'Tunja, Boyacá',
   email:    'juan.mancilla0404@gmail.com',
-  phone:    '322 2376733',
   github:   'https://github.com/Juanito040',
   linkedin: 'https://www.linkedin.com/in/juan-ramirez-633052309/',
   cv:       '/CVE_RAMIREZ_JUAN.pdf',
-  avatar:   null,
+  avatar:   '/favicon.png',
 };
 
 export const skills = [
@@ -151,6 +146,22 @@ export const projects = [
 
 export const experience = [
   {
+    id: 8,
+    role: {
+      es: 'Pasante de Desarrollo de Software',
+      en: 'Software Development Intern',
+    },
+    company: 'Hospital San Rafael de Tunja',
+    period: 'Feb 2026 — Presente',
+    type: 'Pasantía',
+    description: {
+      es: 'Desarrollo de sistema de gestión y control de equipos tecnológicos institucionales, orientado a su integración con la mesa de servicios del hospital. Centralización del inventario, seguimiento de incidencias y trazabilidad de activos, reemplazando procesos manuales mediante arquitectura modular y buenas prácticas de desarrollo.',
+      en: 'Development of an institutional equipment management and control system oriented toward integration with the hospital service desk. Centralization of inventory, incident tracking and asset traceability, replacing manual processes through a modular architecture and development best practices.',
+    },
+    tech: ['Angular', 'TypeScript', 'Node.js', 'Express.js', 'MySQL', 'JWT', 'Bootstrap'],
+    current: true,
+  },
+  {
     id: 1,
     role: {
       es: 'Desarrollador IA — CoreVital',
@@ -160,7 +171,7 @@ export const experience = [
     period: '2025 — 2026',
     type: 'Freelance',
     description: {
-      es: 'Diseñé e implementé un sistema de IA local para consulta de documentación médica institucional. Construí una API REST con FastAPI en arquitectura en capas; implementé un pipeline RAG con procesamiento de PDF/DOCX, chunking, embeddings con nomic-embed-text y búsqueda semántica sobre ChromaDB. Integré Ollama con el modelo qwen2.5:32b para inferencia 100% offline, garantizando privacidad total de datos clínicos. Incluye autenticación JWT + bcrypt, control de roles (médico/admin), auditoría de consultas y migraciones con Alembic.',
+      es: 'Diseño e implementación de sistema de IA local para consulta de documentación médica institucional. Construcción de API REST con FastAPI en arquitectura en capas; implementación de pipeline RAG con procesamiento de PDF/DOCX, chunking, embeddings con nomic-embed-text y búsqueda semántica sobre ChromaDB. Integración de Ollama con el modelo qwen2.5:32b para inferencia 100% offline, garantizando privacidad total de datos clínicos. Incluye autenticación JWT + bcrypt, control de roles (médico/admin), auditoría de consultas y migraciones con Alembic.',
       en: 'Designed and implemented a local AI system for querying institutional medical documentation. Built a layered REST API with FastAPI, implemented a RAG pipeline with PDF/DOCX processing, chunking, nomic-embed-text embeddings and semantic search over ChromaDB. Integrated Ollama with the qwen2.5:32b model for 100% offline inference, ensuring full privacy of clinical data. Includes JWT + bcrypt authentication, role-based access (doctor/admin), query auditing and Alembic migrations.',
     },
     tech: ['Python', 'FastAPI', 'ChromaDB', 'Ollama', 'SQLAlchemy', 'Alembic', 'JWT', 'PyMuPDF', 'pytest'],
@@ -176,7 +187,7 @@ export const experience = [
     period: '2026',
     type: 'Freelance',
     description: {
-      es: 'Desarrollé de inicio a fin una plataforma LegalTech para automatizar la contestación de tutelas bajo el Decreto 2591/91. Integré Groq (LLaMA 3.3 70B) para extraer automáticamente datos estructurados de PDFs judiciales con sanitización de prompt injection. Implementé generación de contestaciones jurídicas y exportación a .docx con formato legal. Construí un cron job que calcula días hábiles y envía alertas de vencimiento vía Gmail SMTP. Diseñé autenticación JWT + cookies HttpOnly y sistema multi-rol (abogado/asistente/admin).',
+      es: 'Desarrollo end-to-end de plataforma LegalTech para automatizar la contestación de tutelas bajo el Decreto 2591/91. Integración de Groq (LLaMA 3.3 70B) para extracción automática de datos estructurados de PDFs judiciales con sanitización de prompt injection. Implementación de generación de contestaciones jurídicas y exportación a .docx con formato legal. Construcción de cron job para cálculo de días hábiles y envío de alertas de vencimiento vía Gmail SMTP. Diseño de autenticación JWT + cookies HttpOnly y sistema multi-rol (abogado/asistente/admin).',
       en: 'Built end-to-end a LegalTech platform to automate tutela (injunction) responses under Decree 2591/91. Integrated Groq (LLaMA 3.3 70B) to automatically extract structured data from judicial PDFs with prompt injection sanitization. Implemented legal draft generation and .docx export with proper legal formatting. Built a cron job calculating business days and sending deadline alerts via Gmail SMTP. Designed JWT + HttpOnly cookie authentication and multi-role system (lawyer/assistant/admin).',
     },
     tech: ['Next.js 14', 'React 18', 'Tailwind CSS', 'NextAuth', 'PostgreSQL', 'Prisma', 'Supabase', 'Groq API', 'Nodemailer', 'Vercel'],
@@ -185,15 +196,15 @@ export const experience = [
   {
     id: 3,
     role: {
-      es: 'Desarrollador de Software',
-      en: 'Software Developer',
+      es: 'Practicante de Desarrollo de Software',
+      en: 'Software Development Intern',
     },
     company: 'Hospital San Rafael de Tunja',
     period: 'May 2025 — Sep 2025',
-    type: 'Trabajo',
+    type: 'Pasantía',
     description: {
-      es: 'Desarrollé un sistema de control y regulación de equipos tecnológicos para el área de informática. Mejoré el control de activos, reduje tiempos de búsqueda en inventario e implementé una interfaz accesible para consulta de dispositivos. Apliqué metodologías ágiles durante todo el desarrollo.',
-      en: 'Developed a control and regulation system for technological devices in the IT department. Improved asset tracking, reduced inventory search times and implemented an accessible interface for device queries. Applied agile methodologies throughout the project.',
+      es: 'Desarrollo de sistema de control y regulación de equipos tecnológicos para el área de informática. Mejora del control de activos, reducción de tiempos de búsqueda en inventario e implementación de interfaz accesible para consulta de dispositivos. Aplicación de metodologías ágiles durante todo el ciclo de desarrollo.',
+      en: 'Development of a control and regulation system for technological devices in the IT department. Improvement of asset tracking, reduction of inventory search times and implementation of an accessible interface for device queries. Application of agile methodologies throughout the development cycle.',
     },
     tech: ['Angular 15+', 'Node.js', 'MySQL', 'JWT', 'Bootstrap', 'Git'],
     current: false,
@@ -206,10 +217,10 @@ export const experience = [
     },
     company: 'Fundación MDA Tunja',
     period: 'Ene 2025 — Abr 2025',
-    type: 'Trabajo',
+    type: 'Freelance',
     description: {
-      es: 'Desarrollé un sistema web integral de gestión de usuarios para administrar el registro y seguimiento de beneficiarias. Lideré el equipo de desarrollo, mejoré en un 100% la administración de registros y eliminé procesos obsoletos.',
-      en: 'Developed a comprehensive user management web system to handle registration and follow-up of beneficiaries. Led the development team, improved record management by 100% and eliminated outdated processes.',
+      es: 'Desarrollo de sistema web integral de gestión de usuarios para administrar el registro y seguimiento de beneficiarias. Liderazgo del equipo de desarrollo, mejora del 100% en la administración de registros y eliminación de procesos obsoletos.',
+      en: 'Development of a comprehensive user management web system for registration and follow-up of beneficiaries. Leadership of the development team, 100% improvement in record management and elimination of outdated processes.',
     },
     tech: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL', 'Bootstrap'],
     current: false,
@@ -224,8 +235,8 @@ export const experience = [
     period: 'May 2024 — Ago 2024',
     type: 'Proyecto Académico',
     description: {
-      es: 'Desarrollé una plataforma e-commerce universitaria para catálogo y gestión de compras de partes de computadoras, con interfaz moderna siguiendo estándares profesionales de diseño y usabilidad.',
-      en: 'Developed a university e-commerce platform for a computer hardware catalog and purchase management system, with a modern interface following professional design and usability standards.',
+      es: 'Desarrollo de plataforma e-commerce universitaria para catálogo y gestión de compras de partes de computadoras, con interfaz moderna siguiendo estándares profesionales de diseño y usabilidad.',
+      en: 'Development of a university e-commerce platform for a computer hardware catalog and purchase management system, with a modern interface following professional design and usability standards.',
     },
     tech: ['Angular', 'TypeScript', 'Node.js', 'MySQL', 'Docker', 'Tailwind CSS'],
     current: false,
@@ -240,8 +251,8 @@ export const experience = [
     period: 'Mar 2024 — Jun 2024',
     type: 'Proyecto Académico',
     description: {
-      es: 'Desarrollé una aplicación web para centralizar información institucional, mejorar la organización y trazabilidad de datos en un entorno académico simulado, aplicando buenas prácticas de desarrollo y GitFlow.',
-      en: 'Developed a web application to centralize institutional information, improving data organization and traceability in a simulated academic environment, applying development best practices and GitFlow.',
+      es: 'Desarrollo de aplicación web para centralizar información institucional, mejora de la organización y trazabilidad de datos en un entorno académico simulado, con aplicación de buenas prácticas de desarrollo y GitFlow.',
+      en: 'Development of a web application to centralize institutional information, improvement of data organization and traceability in a simulated academic environment, with application of development best practices and GitFlow.',
     },
     tech: ['Angular', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'JWT'],
     current: false,
