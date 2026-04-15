@@ -7,7 +7,7 @@ export const personalInfo = {
   email:    'juan.mancilla0404@gmail.com',
   github:   'https://github.com/Juanito040',
   linkedin: 'https://www.linkedin.com/in/juan-ramirez-633052309/',
-  cv:       '/CVE_RAMIREZ_JUAN.pdf',
+  cv:       '/CVE_JUAN_RAMIREZ.pdf',
   avatar:   '/favicon.png',
 };
 

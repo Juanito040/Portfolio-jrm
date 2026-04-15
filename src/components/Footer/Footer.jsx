@@ -82,7 +82,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href={personalInfo.cv} download className={styles.navLink}>
+                  <a href={personalInfo.cv} download="CV_Juan_Ramirez.pdf" className={styles.navLink}>
                     {tx(t.footer.cv, lang)}
                   </a>
                 </li>
