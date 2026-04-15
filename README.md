@@ -7,5 +7,3 @@ Sitio web de portafolio construido con React y Vite.
 - React 19 + Vite
 - Framer Motion
 - SCSS Modules
-
-
