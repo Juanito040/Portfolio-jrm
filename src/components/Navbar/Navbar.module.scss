@@ -116,6 +116,9 @@
   padding: $space-2;
   border-radius: $radius-md;
   transition: $transition-base;
+  min-width: 44px;
+  min-height: 44px;
+  @include flex-center;
 
   &:hover { color: $color-primary; }
 

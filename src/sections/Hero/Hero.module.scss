@@ -34,6 +34,11 @@
     gap: $space-10;
     padding: $space-8 0;
   }
+
+  @include mobile {
+    gap: $space-6;
+    padding: $space-6 0;
+  }
 }
 
 // Columna texto

@@ -12,7 +12,7 @@
   max-width: 960px;
   margin: 0 auto;
 
-  @include mobile { grid-template-columns: 1fr 1fr; gap: $space-3; }
+  @include mobile { grid-template-columns: 1fr; gap: $space-4; }
 }
 
 // Tarjeta de contacto
