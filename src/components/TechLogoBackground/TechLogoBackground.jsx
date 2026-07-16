@@ -6,7 +6,7 @@ import {
   siNextdotjs,
 } from 'simple-icons';
 
-const ICON_MAP = {
+export const ICON_MAP = {
   angular:   siAngular,
   php:       siPhp,
   python:    siPython,

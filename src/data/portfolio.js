@@ -1,10 +1,10 @@
 export const personalInfo = {
-  name:     'Juan Ramirez',
+  name:     'Juan Miguel Ramírez Mancilla',
   role:     'Desarrollador de Software Full Stack',
   tagline:  'Ingeniero de Sistemas especializado en desarrollo web full stack, con experiencia en proyectos reales y tecnologías modernas.',
-  bio:      'Ingeniero de Sistemas con experiencia en diversas tecnologías de desarrollo de software, con especial fortaleza en desarrollo web full stack. Manejo Node.js, Angular, Python, HTML, CSS, JavaScript y PHP, bases de datos MySQL y PostgreSQL, contenedorización con Docker y servicios en la nube con Microsoft Azure.',
+  bio:      'Ingeniero de Sistemas con experiencia en diversas tecnologías de desarrollo de software, con especial fortaleza en desarrollo web full stack. Manejo Node.js, Angular, React, Python (FastAPI), PHP, JavaScript, HTML y CSS, bases de datos MySQL/MariaDB y PostgreSQL, contenedorización con Docker y servicios en la nube con Microsoft Azure.',
   location: 'Tunja, Boyacá',
-  email:    'juan.mancilla0404@gmail.com',
+  email:    'juanmiguel.ramirez0404@gmail.com',
   github:   'https://github.com/Juanito040',
   linkedin: 'https://www.linkedin.com/in/juan-ramirez-633052309/',
   cv:       '/CVE_JUAN_RAMIREZ.pdf',
@@ -13,29 +13,33 @@ export const personalInfo = {
 
 export const skills = [
   // Frontend
-  { name: 'Angular',      category: 'Frontend', level: 88 },
-  { name: 'TypeScript',   category: 'Frontend', level: 82 },
-  { name: 'JavaScript',   category: 'Frontend', level: 85 },
-  { name: 'HTML5 / CSS3', category: 'Frontend', level: 90 },
-  { name: 'Bootstrap',    category: 'Frontend', level: 80 },
+  { name: 'Angular',           category: 'Frontend', level: 88 },
+  { name: 'React',             category: 'Frontend', level: 78 },
+  { name: 'TypeScript',        category: 'Frontend', level: 82 },
+  { name: 'JavaScript',        category: 'Frontend', level: 85 },
+  { name: 'HTML5 / CSS3',      category: 'Frontend', level: 90 },
+  { name: 'Tailwind CSS',      category: 'Frontend', level: 80 },
+  { name: 'Bootstrap',         category: 'Frontend', level: 80 },
   // Backend
-  { name: 'Node.js',      category: 'Backend',  level: 85 },
-  { name: 'Express.js',   category: 'Backend',  level: 82 },
-  { name: 'Python',       category: 'Backend',  level: 78 },
-  { name: 'FastAPI',      category: 'Backend',  level: 72 },
-  { name: 'PHP',          category: 'Backend',  level: 70 },
-  { name: 'MySQL',        category: 'Backend',  level: 85 },
-  { name: 'PostgreSQL',   category: 'Backend',  level: 75 },
+  { name: 'Node.js',           category: 'Backend',  level: 85 },
+  { name: 'Express.js',        category: 'Backend',  level: 82 },
+  { name: 'Python',            category: 'Backend',  level: 78 },
+  { name: 'FastAPI',           category: 'Backend',  level: 72 },
+  { name: 'PHP',               category: 'Backend',  level: 70 },
+  { name: 'MySQL / MariaDB',   category: 'Backend',  level: 85 },
+  { name: 'PostgreSQL',        category: 'Backend',  level: 75 },
+  { name: 'Prisma ORM',        category: 'Backend',  level: 72 },
   // DevOps
-  { name: 'Docker',       category: 'DevOps',   level: 72 },
-  { name: 'Git / GitHub', category: 'DevOps',   level: 88 },
-  { name: 'Azure',        category: 'DevOps',   level: 65 },
-  { name: 'JWT / Auth',   category: 'DevOps',   level: 80 },
+  { name: 'Docker',            category: 'DevOps',   level: 72 },
+  { name: 'Git / GitHub',      category: 'DevOps',   level: 88 },
+  { name: 'Azure',             category: 'DevOps',   level: 65 },
+  { name: 'JWT / bcrypt',      category: 'DevOps',   level: 80 },
 ];
 
 export const projects = [
   {
     id: 1,
+    cover: '/projects/hospital.png',
     title: {
       es: 'Control de Equipos — Hospital San Rafael',
       en: 'Device Control System — Hospital San Rafael',
@@ -54,6 +58,7 @@ export const projects = [
   },
   {
     id: 2,
+    cover: '/MDA.png',
     title: {
       es: 'Gestión de Usuarios — Fundación MDA',
       en: 'User Management System — MDA Foundation',
@@ -72,6 +77,7 @@ export const projects = [
   },
   {
     id: 3,
+    cover: ['/SHOP1.png', '/SHOP2.png', '/SHOP3.png'],
     title: {
       es: 'Catálogo y Gestor de Compras de Hardware',
       en: 'Hardware Parts Catalog & Shop Manager',
@@ -90,6 +96,7 @@ export const projects = [
   },
   {
     id: 4,
+    cover: '/projects/institucional.png',
     title: {
       es: 'Plataforma de Gestión Institucional',
       en: 'Institutional Management Platform',
@@ -108,6 +115,7 @@ export const projects = [
   },
   {
     id: 5,
+    cover: ['/PORTADAcore.png', '/CORE.png'],
     title: {
       es: 'CoreVital — Sistema de Consulta IA Hospitalaria',
       en: 'CoreVital — Hospital AI Query System',
@@ -126,6 +134,7 @@ export const projects = [
   },
   {
     id: 6,
+    cover: ['/PORTADAlaw.png', '/indexlaw.png'],
     title: {
       es: 'TutelaIA — Plataforma LegalTech',
       en: 'TutelaIA — LegalTech Platform',
@@ -152,14 +161,14 @@ export const experience = [
       en: 'Software Development Intern',
     },
     company: 'Hospital San Rafael de Tunja',
-    period: 'Feb 2026 — Presente',
+    period: 'Feb 2026 — Jun 2026',
     type: 'Pasantía',
     description: {
-      es: 'Desarrollo de sistema de gestión y control de equipos tecnológicos institucionales, orientado a su integración con la mesa de servicios del hospital. Centralización del inventario, seguimiento de incidencias y trazabilidad de activos, reemplazando procesos manuales mediante arquitectura modular y buenas prácticas de desarrollo.',
-      en: 'Development of an institutional equipment management and control system oriented toward integration with the hospital service desk. Centralization of inventory, incident tracking and asset traceability, replacing manual processes through a modular architecture and development best practices.',
+      es: 'Continuación y expansión del sistema institucional de gestión y control de equipos tecnológicos. Evolución y mantenimiento de la plataforma de control de activos, implementación de mejoras funcionales con base en la retroalimentación del equipo de TI del hospital y garantía de la estabilidad y disponibilidad del sistema en un entorno de producción real.',
+      en: 'Continuation and expansion of the institutional technological equipment management and control system. Evolution and maintenance of the asset control platform, implementation of functional improvements based on feedback from the hospital IT team, and ensuring the stability and availability of the system in a real production environment.',
     },
-    tech: ['Angular', 'TypeScript', 'Node.js', 'Express.js', 'MySQL', 'JWT', 'Bootstrap'],
-    current: true,
+    tech: ['Angular 15+', 'TypeScript', 'Node.js', 'Express.js', 'MySQL/MariaDB', 'JWT', 'Git/GitHub'],
+    current: false,
   },
   {
     id: 1,
@@ -263,14 +272,14 @@ export const experience = [
       es: 'Ingeniería de Sistemas',
       en: 'Systems Engineering',
     },
-    company: 'Universidad Santo Tomás de Tunja',
-    period: '2021 — Presente',
+    company: 'Universidad Santo Tomás — Seccional Tunja',
+    period: '2021 — 2026',
     type: 'Educación',
     description: {
-      es: 'Pregrado en Ingeniería de Sistemas, actualmente en décimo semestre. Formación sólida en desarrollo de software, bases de datos, redes, arquitectura de sistemas e inglés avanzado.',
-      en: "Bachelor's degree in Systems Engineering, currently in the tenth semester. Solid background in software development, databases, networking, systems architecture and advanced English.",
+      es: 'Pregrado en Ingeniería de Sistemas. Formación sólida en desarrollo de software, bases de datos, redes, arquitectura de sistemas e inglés avanzado.',
+      en: "Bachelor's degree in Systems Engineering. Solid background in software development, databases, networking, systems architecture and advanced English.",
     },
     tech: ['Java', 'Python', 'C++', 'SQL', 'Redes'],
-    current: true,
+    current: false,
   },
 ];

@@ -114,8 +114,8 @@
     .cardAccent { transform: scaleX(1); }
     .cardTitle  { color: var(--accent, #{$color-primary}); }
 
-    // Logo de fondo sube de opacidad al hover
-    span[aria-hidden="true"] { opacity: 0.1 !important; }
+    // Logo de fondo (hijo directo) sube de opacidad al hover
+    > span[aria-hidden="true"] { opacity: 0.1 !important; }
   }
 }
 

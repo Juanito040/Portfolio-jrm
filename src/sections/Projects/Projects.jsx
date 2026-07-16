@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Star } from 'lucide-react';
 import { GithubIcon } from '../../components/SocialIcons';
 import TechLogoBackground from '../../components/TechLogoBackground/TechLogoBackground';
+import ProjectCover from '../../components/ProjectCover/ProjectCover';
+import Lightbox from '../../components/Lightbox/Lightbox';
 import { projects } from '../../data/portfolio';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
@@ -18,7 +21,7 @@ const cardVariants = {
 const freelanceIds  = [5, 6, 2];
 const universityIds = [3, 4];
 
-function ProjectGroup({ titleKey, ids, lang, gridClass }) {
+function ProjectGroup({ titleKey, ids, lang, gridClass, onCoverOpen }) {
   const { ref, isInView } = useScrollReveal();
   const filtered = projects.filter(p => ids.includes(p.id));
 
@@ -32,8 +35,8 @@ function ProjectGroup({ titleKey, ids, lang, gridClass }) {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        {filtered.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+        {filtered.map((project) => (
+          <ProjectCard key={project.id} project={project} onCoverOpen={onCoverOpen} />
         ))}
       </motion.div>
     </div>
@@ -42,6 +45,7 @@ function ProjectGroup({ titleKey, ids, lang, gridClass }) {
 
 export default function Projects() {
   const { lang } = useLanguage();
+  const [lightbox, setLightbox] = useState(null);
 
   return (
     <section id="projects" className={`section ${styles.projects}`}>
@@ -53,10 +57,18 @@ export default function Projects() {
           description={tx(t.projects.description, lang)}
         />
 
-        <ProjectGroup titleKey="freelanceTitle"  ids={freelanceIds}  lang={lang} gridClass={styles.gridThree} />
-        <ProjectGroup titleKey="universityTitle" ids={universityIds} lang={lang} />
+        <ProjectGroup titleKey="freelanceTitle"  ids={freelanceIds}  lang={lang} gridClass={styles.gridThree} onCoverOpen={setLightbox} />
+        <ProjectGroup titleKey="universityTitle" ids={universityIds} lang={lang} onCoverOpen={setLightbox} />
 
       </div>
+
+      <Lightbox
+        data={lightbox}
+        onClose={() => setLightbox(null)}
+        closeLabel={tx(t.projects.closeShot, lang)}
+        prevLabel={tx(t.projects.prevShot, lang)}
+        nextLabel={tx(t.projects.nextShot, lang)}
+      />
     </section>
   );
 }
@@ -70,8 +82,15 @@ function FeaturedBadge() {
   );
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, onCoverOpen }) {
   const { lang } = useLanguage();
+  const title = tx(project.title, lang);
+  const coverList = Array.isArray(project.cover)
+    ? project.cover
+    : project.cover
+      ? [project.cover]
+      : [];
+
   return (
     <motion.article
       layout
@@ -86,6 +105,17 @@ function ProjectCard({ project, index }) {
     >
       <div className={styles.cardAccent} />
       <TechLogoBackground techKey={project.mainTech} color={project.color} />
+
+      <ProjectCover
+        images={project.cover}
+        alt={title}
+        techKey={project.mainTech}
+        color={project.color}
+        viewLabel={`${tx(t.projects.viewShot, lang)}: ${title}`}
+        prevLabel={tx(t.projects.prevShot, lang)}
+        nextLabel={tx(t.projects.nextShot, lang)}
+        onOpen={(i) => onCoverOpen({ images: coverList, index: i, alt: title, title })}
+      />
 
       <div className={styles.cardHeader}>
         <div className={styles.cardMeta}>
@@ -110,12 +140,12 @@ function ProjectCard({ project, index }) {
         </div>
       </div>
 
-      <h3 className={styles.cardTitle}>{tx(project.title, lang)}</h3>
+      <h3 className={styles.cardTitle}>{title}</h3>
       <p className={styles.cardDesc}>{tx(project.description, lang)}</p>
 
       <div className={styles.techList}>
-        {project.tech.map((t) => (
-          <span key={t} className={`badge badge-secondary ${styles.tech}`}>{t}</span>
+        {project.tech.map((tech) => (
+          <span key={tech} className={`badge badge-secondary ${styles.tech}`}>{tech}</span>
         ))}
       </div>
     </motion.article>

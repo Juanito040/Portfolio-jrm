@@ -55,6 +55,10 @@ export const t = {
     featured:        { es: 'Destacado', en: 'Featured' },
     freelanceTitle:  { es: 'Proyectos Freelance',       en: 'Freelance Projects' },
     universityTitle: { es: 'Proyectos Universitarios',  en: 'University Projects' },
+    viewShot:        { es: 'Ver captura',  en: 'View screenshot' },
+    closeShot:       { es: 'Cerrar',       en: 'Close' },
+    prevShot:        { es: 'Imagen anterior', en: 'Previous image' },
+    nextShot:        { es: 'Imagen siguiente', en: 'Next image' },
   },
 
 

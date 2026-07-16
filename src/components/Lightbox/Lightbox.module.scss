@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  @include flex-center;
+  flex-direction: column;
+  padding: $space-6;
+  background: rgba(5, 8, 11, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+.close {
+  position: absolute;
+  top: $space-5;
+  right: $space-5;
+  @include flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: $radius-full;
+  color: $color-text;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid $color-border;
+  cursor: pointer;
+  transition: $transition-spring;
+  @include focus-ring;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(1.08);
+  }
+}
+
+.figure {
+  margin: 0;
+  max-width: min(1100px, 92vw);
+  max-height: 86vh;
+  @include flex-col;
+  align-items: center;
+  gap: $space-3;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-lg;
+}
+
+.caption {
+  font-family: $font-heading;
+  font-size: $text-sm;
+  font-weight: 600;
+  color: $color-text;
+  text-align: center;
+}
+
+.counter {
+  color: $color-text-muted;
+  font-weight: 500;
+}
+
+// Flechas de navegación
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-full;
+  color: $color-text;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid $color-border;
+  cursor: pointer;
+  transition: $transition-spring;
+  @include focus-ring;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-50%) scale(1.08);
+  }
+}
+
+.navPrev { left: $space-5; }
+.navNext { right: $space-5; }
+
+@include mobile {
+  .nav { width: 40px; height: 40px; }
+  .navPrev { left: $space-2; }
+  .navNext { right: $space-2; }
+}

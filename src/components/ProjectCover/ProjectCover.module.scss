@@ -1,0 +1,215 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.frame {
+  position: relative;
+  z-index: 1;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  background: $color-bg-card2;
+  box-shadow: $shadow-sm;
+  margin-bottom: $space-5;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+// Barra superior tipo ventana de navegador
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 $space-3;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid $color-border;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: $radius-full;
+  background: rgba(255, 255, 255, 0.16);
+
+  &:nth-child(1) { background: rgba(#F87171, 0.55); }
+  &:nth-child(2) { background: rgba(#FBBF24, 0.55); }
+  &:nth-child(3) { background: rgba(#34D399, 0.55); }
+}
+
+// Área de la imagen (16:9)
+.viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: $color-bg-card;
+  overflow: hidden;
+}
+
+// Slides apilados con crossfade
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  z-index: 0;
+}
+
+.img[data-active][data-loaded] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.viewport:hover .img[data-active][data-loaded] {
+  transform: scale(1.05);
+}
+
+// Placeholder cuando la imagen activa no está lista
+.placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  @include flex-center;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.04), transparent 60%),
+    linear-gradient(135deg, var(--accent, #{$color-primary}) 0%, $color-bg-card 85%);
+}
+
+.placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.12) 0,
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+  opacity: 0.35;
+}
+
+.phIcon {
+  position: relative;
+  width: 34%;
+  max-width: 84px;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.4));
+}
+
+.phFallback {
+  position: relative;
+  width: 30%;
+  max-width: 70px;
+  height: auto;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+// Zona clicable transparente para abrir el lightbox
+.openBtn {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  @include focus-ring;
+
+  &:disabled { cursor: default; }
+}
+
+// Lupa que aparece al pasar el cursor sobre una imagen real
+.zoomHint {
+  position: absolute;
+  top: $space-2;
+  right: $space-2;
+  z-index: 3;
+  @include flex-center;
+  width: 30px;
+  height: 30px;
+  border-radius: $radius-md;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.viewport:hover .zoomHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Flechas del carrusel
+.navBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  transform: translateY(-50%);
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
+  @include focus-ring;
+
+  &:hover { background: rgba(0, 0, 0, 0.7); }
+  &:focus-visible { opacity: 1; }
+}
+
+.navPrev { left: $space-2; }
+.navNext { right: $space-2; }
+
+.viewport:hover .navBtn { opacity: 1; }
+
+// Puntos indicadores
+.dots {
+  position: absolute;
+  bottom: $space-2;
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: $radius-full;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.slideDot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: $radius-full;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover { background: rgba(255, 255, 255, 0.6); }
+
+  &[data-active] {
+    background: #fff;
+    transform: scale(1.25);
+  }
+}
+
+// En pantallas táctiles, flechas y lupa siempre visibles
+@media (hover: none) {
+  .navBtn { opacity: 1; }
+}

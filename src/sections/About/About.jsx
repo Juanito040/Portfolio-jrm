@@ -40,7 +40,7 @@ export default function About() {
     {
       icon: <GraduationCap size={18} />,
       label: tx(t.about.facts.formation, lang),
-      value: <AnimatedNumber to={4} suffix="+" isInView={factsInView} />,
+      value: <AnimatedNumber to={5} suffix="+" isInView={factsInView} />,
     },
     {
       icon: <MapPin size={18} />,
